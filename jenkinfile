@@ -27,16 +27,7 @@ pipeline {
                 always {
                     echo"Unit and Integration Test Running.."
                 }
-                success{
-                    echo "Unit and Integration test were successful.."
-
-                    emailext(
-                    to:'nmanasa789@gmail.com',
-                    subject:"Unit and Integration update",
-                    body:"Unit and Integration test were successful.. ",
-                    attachLog:true
-                    )
-                }
+               
                 failure{
                     echo "Error in Unit and Integration test. Something went wrong"
                     emailext (
@@ -44,6 +35,16 @@ pipeline {
                     subject:"Unit and Integration update",
                     body:"Error in Unit and Integration test. Something went wrong ",
                     attachLog:true
+                    )
+                }
+                 success{
+                    echo "Unit and Integration test were successful.."
+
+                    emailext(
+                    to:'nmanasa789@gmail.com',
+                    subject:"Unit and Integration update",
+                    body:"Unit and Integration test were successful.. ",
+                    
                     )
                 }
                 
@@ -66,15 +67,7 @@ pipeline {
                 always {
                     echo"Security scan Test Running.."
                 }
-                success{
-                    echo "Security scan was successful.."
-                    emailext (
-                    to:'nmanasa789@gmail.com',
-                    subject:"Security scan Update",
-                    body:"Security scan was successful.. ",
-                    attachLog:true
-                    )    
-                }
+            
                 failure{
                     echo "Error in security scanning, Something went wrong"
                     emailext(
@@ -84,7 +77,15 @@ pipeline {
                     attachLog:true
                     )
                 }
-                
+                    success{
+                    echo "Security scan was successful.."
+                    emailext (
+                    to:'nmanasa789@gmail.com',
+                    subject:"Security scan Update",
+                    body:"Security scan was successful.. ",
+                    
+                    )    
+                }
             }
                 
         }
@@ -104,15 +105,7 @@ pipeline {
                 always {
                     echo"Integration test on staging are Running.."
                 }
-                success{
-                    echo "Integration test on staging was successful.."
-                    emailext(
-                    to:'nmanasa789@gmail.com',
-                    subject:"Integration test on staging Update",
-                    body:"Integration test on staging was successful.. ",
-                    attachLog:true
-                    )
-                }
+              
                 failure{
                     echo "Error in Integration test on staging, Something went wrong"
                     emailext(
@@ -120,6 +113,15 @@ pipeline {
                     subject:"Integration test on staging Update",
                     body:"Error in Integration test on staging, Something went wrong",
                     attachLog:true
+                    )
+                }
+              success{
+                    echo "Integration test on staging was successful.."
+                    emailext(
+                    to:'nmanasa789@gmail.com',
+                    subject:"Integration test on staging Update",
+                    body:"Integration test on staging was successful.. ",
+                  
                     )
                 }
                 
