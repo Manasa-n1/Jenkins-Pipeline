@@ -32,15 +32,15 @@ pipeline {
                 success{
                     echo "Unit and Integration test were successful.."
                     emailtext to:"nmanasa789@gmail.com"
-                    subject: Unit and Integration update
-                    body: "Unit and Integration test were successful.. "
+                    subject:Unit and Integration update
+                    body:"Unit and Integration test were successful.. "
                     attachLog:true
                 }
                 failure{
                     echo "Error in Unit and Integration test. Something went wrong"
                     emailtext to:"nmanasa789@gmail.com"
-                    subject: Unit and Integration update
-                    body: "Error in Unit and Integration test. Something went wrong "
+                    subject:Unit and Integration update
+                    body:"Error in Unit and Integration test. Something went wrong "
                     attachLog:true
                 }
                 
@@ -66,15 +66,15 @@ pipeline {
                 success{
                     echo "Security scan was successful.."
                     emailtext to:"nmanasa789@gmail.com"
-                    subject: Security scan Update
-                    body: "Security scan was successful.. "
+                    subject:Security scan Update
+                    body:"Security scan was successful.. "
                     attachLog:true
                 }
                 failure{
                     echo "Error in security scanning, Something went wrong"
                     emailtext to:"nmanasa789@gmail.com"
-                    subject: Security scan Update
-                    body: "Error in security scanning, Something went wrong"
+                    subject:Security scan Update
+                    body:"Error in security scanning, Something went wrong"
                     attachLog:true
                 }
                 
@@ -100,15 +100,15 @@ pipeline {
                 success{
                     echo "Integration test on staging was successful.."
                     emailtext to:"nmanasa789@gmail.com"
-                    subject: Integration test on staging Update
-                    body: "Integration test on staging was successful.. "
+                    subject:Integration test on staging Update
+                    body:"Integration test on staging was successful.. "
                     attachLog:true
                 }
                 failure{
                     echo "Error in Integration test on staging, Something went wrong"
                     emailtext to:"nmanasa789@gmail.com"
-                    subject: Integration test on staging Update
-                    body: "Error in Integration test on staging, Something went wrong"
+                    subject:Integration test on staging Update
+                    body:"Error in Integration test on staging, Something went wrong"
                     attachLog:true
                 }
                 
