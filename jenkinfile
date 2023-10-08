@@ -30,7 +30,7 @@ pipeline {
                 success{
                     echo "Unit and Integration test were successful.."
 
-                    emailtext(
+                    emailext(
                     to:'nmanasa789@gmail.com',
                     subject:"Unit and Integration update",
                     body:"Unit and Integration test were successful.. ",
@@ -39,7 +39,7 @@ pipeline {
                 }
                 failure{
                     echo "Error in Unit and Integration test. Something went wrong"
-                    emailtext (
+                    emailext (
                     to:'nmanasa789@gmail.com',
                     subject:"Unit and Integration update",
                     body:"Error in Unit and Integration test. Something went wrong ",
@@ -68,7 +68,7 @@ pipeline {
                 }
                 success{
                     echo "Security scan was successful.."
-                    emailtext (
+                    emailext (
                     to:'nmanasa789@gmail.com',
                     subject:"Security scan Update",
                     body:"Security scan was successful.. ",
@@ -77,7 +77,7 @@ pipeline {
                 }
                 failure{
                     echo "Error in security scanning, Something went wrong"
-                    emailtext(
+                    emailext(
                     to:'nmanasa789@gmail.com',
                     subject:"Security scan Update",
                     body:"Error in security scanning, Something went wrong",
@@ -106,7 +106,7 @@ pipeline {
                 }
                 success{
                     echo "Integration test on staging was successful.."
-                    emailtext(
+                    emailext(
                     to:'nmanasa789@gmail.com',
                     subject:"Integration test on staging Update",
                     body:"Integration test on staging was successful.. ",
@@ -115,7 +115,7 @@ pipeline {
                 }
                 failure{
                     echo "Error in Integration test on staging, Something went wrong"
-                    emailtext(
+                    emailext(
                     to:'nmanasa789@gmail.com',
                     subject:"Integration test on staging Update",
                     body:"Error in Integration test on staging, Something went wrong",
