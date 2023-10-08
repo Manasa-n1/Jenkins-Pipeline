@@ -1,52 +1,126 @@
-pipeline { agent any
-
-environment {
-    DIRECTORY_PATH = "/path/to/code/directory"
-    TESTING_ENVIRONMENT = "test environment"
-    PRODUCTION_ENVIRONMENT = "production environment"
-}
-
-stages {
-    stage('Build') {
-        steps {
-            echo "Fetching the source code from the directory path: ${env.DIRECTORY_PATH}"
-            echo "compile the code and generate any necessary artifacts."
-        }
+pipeline {
+    agent any
+    
+    tools{ maven 'Maven 2.3.7'
+        
     }
     
-    stage('Test') {
-        steps {
-            echo "Running unit tests"
-            echo "Running integration tests"
-        }
+    environment {
+        DIRECTORY_PATH = "/path/to/code/directory"
+        TESTING_ENVIRONMENT = "test environment"
+        PRODUCTION_ENVIRONMENT = "production environment"
     }
     
-    stage('Code Quality Check') {
-        steps {
-            echo "Checking the quality of the code"
-        }
-    }
-    
-    stage('Deploy') {
-        steps {
-            echo "Deploying the application to the testing environment: ${env.TESTING_ENVIRONMENT}"
-        }
-    }
-    
-    stage('Approval') {
-        steps {
-            script {
-                echo "Waiting for manual approval"
-                sleep 10
-                echo "Manual approval done"
+    stages {
+        stage('Build') {
+            steps {
+                echo "Fetching the source code from the directory path: ${env.DIRECTORY_PATH}"
+                echo " building using build automation tool MAVEN"
             }
         }
-    }
     
-    stage('Deploy to Production') {
-        steps {
-            echo "Deploying the code to the production environment: ${env.PRODUCTION_ENVIRONMENT}"
+    }    
+        
+        stage('Unit and Integration Tests') {
+            steps {
+                echo "Test Using Automation Tool"
+                }
+            post{
+                always {
+                    echo"Unit and Integration Test Running.."
+                }
+                success{
+                    echo "Unit and Integration test were successful.."
+                    emailtext to:"nmanasa789@gmail.com"
+                    subject: Unit and Integration update
+                    body: "Unit and Integration test were successful.. "
+                    attachLog:true
+                }
+                failure{
+                    echo "Error in Unit and Integration test. Something went wrong"
+                    emailtext to:"nmanasa789@gmail.com"
+                    subject: Unit and Integration update
+                    body: "Error in Unit and Integration test. Something went wrong "
+                    attachLog:true
+                }
+                
+            }
+                
         }
-    }
-}
+        
+        stage('Code Analysis') {
+            steps {
+                echo "Checking the quality of the code using code analysis tool: SonarQube"
+            }
+        }
+        
+         
+        stage('Security Scan') {
+            steps {
+                echo "Security scan using Jfrog"
+                }
+            post{
+                always {
+                    echo"Security scan Test Running.."
+                }
+                success{
+                    echo "Security scan was successful.."
+                    emailtext to:"nmanasa789@gmail.com"
+                    subject: Security scan Update
+                    body: "Security scan was successful.. "
+                    attachLog:true
+                }
+                failure{
+                    echo "Error in security scanning, Something went wrong"
+                    emailtext to:"nmanasa789@gmail.com"
+                    subject: Security scan Update
+                    body: "Error in security scanning, Something went wrong"
+                    attachLog:true
+                }
+                
+            }
+                
+        }
+        
+        
+        stage('Deploy to Staging') {
+            steps {
+                echo "Deploying the application to staging server: AWS instance"
+            }
+        }
+        
+              stage('Integration test on staging') {
+            steps {
+                echo "Deploying the application to the testing envirnoment: AWS instance "
+                }
+            post{
+                always {
+                    echo"Integration test on staging are Running.."
+                }
+                success{
+                    echo "Integration test on staging was successful.."
+                    emailtext to:"nmanasa789@gmail.com"
+                    subject: Integration test on staging Update
+                    body: "Integration test on staging was successful.. "
+                    attachLog:true
+                }
+                failure{
+                    echo "Error in Integration test on staging, Something went wrong"
+                    emailtext to:"nmanasa789@gmail.com"
+                    subject: Integration test on staging Update
+                    body: "Error in Integration test on staging, Something went wrong"
+                    attachLog:true
+                }
+                
+            }
+                
+        }
+        
+        stage('Deploy to Production') {
+            steps {
+                echo "Deploying the application to a production server: AWS Instance"
+            }
+        }
+    
+
 }
