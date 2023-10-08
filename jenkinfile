@@ -1,9 +1,7 @@
 pipeline {
     agent any
     
-    tools{ maven 'Maven 3.9.4'
-        
-    }
+   
     
     environment {
         DIRECTORY_PATH = "/path/to/code/directory"
