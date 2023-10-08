@@ -31,9 +31,10 @@ pipeline {
                 failure{
                     echo "Error in Unit and Integration test. Something went wrong"
                     emailext (
-                    to:'nmanasa789@gmail.com',
+                    
                     subject:"Unit and Integration update",
                     body:"Error in Unit and Integration test. Something went wrong ",
+                    to:'nmanasa789@gmail.com',
                     attachLog:true
                     )
                 }
@@ -41,10 +42,11 @@ pipeline {
                     echo "Unit and Integration test were successful.."
 
                     emailext(
-                    to:'nmanasa789@gmail.com',
+                    
                     subject:"Unit and Integration update",
                     body:"Unit and Integration test were successful.. ",
-                    
+                    to:'nmanasa789@gmail.com',
+                    attachLog:true
                     )
                 }
                 
@@ -80,10 +82,11 @@ pipeline {
                     success{
                     echo "Security scan was successful.."
                     emailext (
-                    to:'nmanasa789@gmail.com',
+                    
                     subject:"Security scan Update",
                     body:"Security scan was successful.. ",
-                    
+                    to:'nmanasa789@gmail.com',
+                    attachLog:true
                     )    
                 }
             }
@@ -118,10 +121,11 @@ pipeline {
               success{
                     echo "Integration test on staging was successful.."
                     emailext(
-                    to:'nmanasa789@gmail.com',
+                    
                     subject:"Integration test on staging Update",
                     body:"Integration test on staging was successful.. ",
-                  
+                    to:'nmanasa789@gmail.com',
+                    attachLog:true
                     )
                 }
                 
